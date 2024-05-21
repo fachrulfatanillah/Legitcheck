@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:legitcheck/view_models/view_Model_Profile.dart';
+import 'package:legitcheck/viewmodels/view_Model_Profile.dart';
 import 'package:legitcheck/views/bottom_NavBar.dart';
 import 'package:legitcheck/views/loginOrRegister.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +60,7 @@ class ViewModelSplash extends ChangeNotifier {
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
-                  checkInternetConnection(context); // Perbarui dengan context
+                  checkInternetConnection(context);
                 },
                 child: Text('Try Again'),
               ),

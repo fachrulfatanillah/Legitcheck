@@ -1,7 +1,7 @@
 // import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:legitcheck/view_models/view_Model_Splash_Screen.dart';
+import 'package:legitcheck/viewmodels/view_Model_Splash_Screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -32,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
     final bodyHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: bodyWidth,
         height: bodyHeight,

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-
-List<Map<String, String>> owners = [
-  {'title': 'First Owner', 'email': 'First@gmail.com'},
-  {'title': 'Second Owner', 'email': 'Second@gmail.com'},
-  {'title': 'Current Owner', 'email': 'Current@gmail.com'},
-];
+import 'package:legitcheck/views/claim_ownership.dart';
 
 class ListOfOwnersDetailProduct extends StatelessWidget {
   final double height;
   final double width;
+  final List<Map<String, String>> owners;
 
-  ListOfOwnersDetailProduct({required this.height, required this.width});
+  ListOfOwnersDetailProduct({
+    required this.height,
+    required this.width,
+    required this.owners,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ListOfOwnersDetailProduct extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: Color.fromARGB(70, 158, 158, 158),
         border: Border.all(
-          color: Colors.black,
+          color: Colors.white,
           width: 1,
         ),
       ),
@@ -52,21 +52,33 @@ class ListOfOwnersDetailProduct extends StatelessWidget {
 class ResultQrButton extends StatelessWidget {
   final double height;
   final double width;
+  final String dataDecrypted;
 
-  ResultQrButton({required this.height, required this.width});
+  ResultQrButton(
+      {required this.height, required this.width, required this.dataDecrypted});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      // height: height * 0.1,
       child: Center(
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ClaimOwnershipPage(dataDecrypted),
+              ),
+            );
+          },
           style: ElevatedButton.styleFrom(
             textStyle: TextStyle(fontSize: 18),
-            minimumSize: Size(width * 0.5, height * 1),
+            minimumSize: Size(width * 0.5, height),
             backgroundColor: Colors.black,
+            side: BorderSide(
+              color: Colors.white,
+              width: 2,
+            ),
           ),
           child: Text(
             'Claim Now',

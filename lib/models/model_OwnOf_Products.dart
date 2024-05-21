@@ -3,40 +3,40 @@ import 'package:http/http.dart' as http;
 import 'package:legitcheck/models/api_config.dart';
 
 class APIConfig {
-  static final String baseUrl = '${APIConfigUser.baseUrl}';
-  static final String token = '${APIConfigUser.token}';
+  static final String baseUrl = '${APIConfigOwnofProducts.baseUrl}';
+  static final String token = '${APIConfigOwnofProducts.token}';
 }
 
-class User {
+class OwnOfProducts {
   final String id;
-  final String username;
-  final String email;
-  final String password;
+  final String qrcode_id;
+  final String user_id;
+  final String status;
 
-  User({
+  OwnOfProducts({
     required this.id,
-    required this.username,
-    required this.email,
-    required this.password,
+    required this.qrcode_id,
+    required this.user_id,
+    required this.status,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
+  factory OwnOfProducts.fromJson(Map<String, dynamic> json) {
+    return OwnOfProducts(
       id: json['id'],
-      username: json['username'],
-      email: json['email'],
-      password: json['password'],
+      qrcode_id: json['qrcode_id'],
+      user_id: json['user_id'],
+      status: json['status'],
     );
   }
 }
 
-class UserGet {
+class OwnOfProductsGet {
   String _baseUrl = APIConfig.baseUrl;
   String _token = APIConfig.token;
 
-  UserGet();
+  OwnOfProductsGet();
 
-  Future<List<User>> getUsers() async {
+  Future<List<OwnOfProducts>> getOwnOfProducts() async {
     try {
       final response = await http.get(
         Uri.parse(_baseUrl),
@@ -47,11 +47,11 @@ class UserGet {
 
       if (response.statusCode == 200) {
         Iterable jsonResponse = jsonDecode(response.body);
-        List<User> users =
-            jsonResponse.map((user) => User.fromJson(user)).toList();
+        List<OwnOfProducts> users =
+            jsonResponse.map((user) => OwnOfProducts.fromJson(user)).toList();
         return users;
       } else {
-        throw Exception('Gagal mengambil data pengguna dari API');
+        throw Exception('Gagal mengambil data pemilik products dari API');
       }
     } catch (e) {
       throw Exception('Terjadi kesalahan: $e');
@@ -59,21 +59,23 @@ class UserGet {
   }
 }
 
-class UserPost {
+class OwnOfProductPost {
   String _baseUrl = APIConfig.baseUrl;
   String _token = APIConfig.token;
 
-  UserPost();
+  OwnOfProductPost();
 
-  Future<void> registerUser(
-      String username, String email, String password) async {
+  Future<void> addOwnOfProduct(
+    String qrcode_id,
+    String user_id,
+  ) async {
     try {
       final response = await http.post(
         Uri.parse(_baseUrl),
         body: jsonEncode({
-          'username': username,
-          'email': email,
-          'password': password,
+          'qrcode_id': qrcode_id,
+          'user_id': user_id,
+          'status': 1,
         }),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
@@ -92,19 +94,19 @@ class UserPost {
   }
 }
 
-class UserUpdate {
+class OwnOfProductUpdate {
   final String _baseUrl = APIConfig.baseUrl;
   final String _token = APIConfig.token;
 
-  UserUpdate();
+  OwnOfProductUpdate();
 
-  Future<void> updateUser(String userId, String newPassword) async {
-    final url = '$_baseUrl/$userId';
+  Future<void> updateOwnOfProduct(String id) async {
+    final url = '$_baseUrl/$id';
 
     try {
       final response = await http.put(
         Uri.parse(url),
-        body: 'password=$newPassword',
+        body: 'status=0',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
           'Authorization': 'Bearer $_token',

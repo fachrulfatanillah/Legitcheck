@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:legitcheck/viewmodels/view_Model_Login.dart';
-import 'package:legitcheck/views/forgot_Password.dart';
+import 'package:legitcheck/viewmodels/view_Model_Authentications.dart';
 import 'package:legitcheck/views/loginOrRegister.dart';
 import 'package:legitcheck/views/register.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  bool _obscureText = true;
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   bool isLoading = false;
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
 
-  void login() {
+  void forgotPassword() {
     setState(() {
       isLoading = true;
       FocusScope.of(context).unfocus();
@@ -28,11 +25,8 @@ class _LoginPageState extends State<LoginPage> {
         isLoading = false;
       });
       String email = _emailController.text;
-      String password = _passwordController.text;
-
-      ViewModelLogin viewModel = ViewModelLogin(email, password, context);
-
-      viewModel.login(email, password);
+      Authentications viewModelForgotPassword = Authentications();
+      viewModelForgotPassword.sendOtp(email, context);
     });
   }
 
@@ -101,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: bodyHeight * 0.05,
                         child: Center(
                           child: Text(
-                            "LOGIN",
+                            "Forgot Password",
                             style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
@@ -183,104 +177,10 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             Container(
                               width: bodyWidth,
-                              height: bodyHeight * 0.05,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      "Password",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: bodyWidth,
-                              height: bodyHeight * 0.06,
-                              padding: EdgeInsets.symmetric(),
-                              child: TextField(
-                                controller: _passwordController,
-                                obscureText: _obscureText,
-                                autocorrect: false,
-                                autofocus: false,
-                                decoration: InputDecoration(
-                                  filled: true,
-                                  fillColor: Colors.black,
-                                  contentPadding: EdgeInsets.all(10.0),
-                                  hintStyle: TextStyle(
-                                    color: Color.fromARGB(255, 35, 35, 35),
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(
-                                      color: Colors.white,
-                                      width: 3.0,
-                                    ),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  suffixIcon: IconButton(
-                                    icon: Icon(
-                                      _obscureText
-                                          ? Icons.visibility_off
-                                          : Icons.visibility,
-                                      color: Colors.white,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        _obscureText = !_obscureText;
-                                      });
-                                    },
-                                  ),
-                                ),
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            //forgot password
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ForgotPasswordPage()),
-                                );
-                              },
-                              child: Container(
-                                width: bodyWidth,
-                                height: bodyHeight * 0.05,
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    "forgot password?",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            Container(
-                              width: bodyWidth,
-                              height: bodyHeight * 0.08,
+                              height: bodyHeight * 0.15,
                               child: Center(
                                 child: ElevatedButton(
-                                  onPressed: isLoading ? null : login,
+                                  onPressed: isLoading ? null : forgotPassword,
                                   style: ElevatedButton.styleFrom(
                                     textStyle: TextStyle(fontSize: 18),
                                     minimumSize: Size(
@@ -296,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
                                           color: Colors.white,
                                         )
                                       : Text(
-                                          'Login',
+                                          'Continue',
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 18,
