@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:legitcheck/models/model_OwnOf_Products.dart';
 import 'package:legitcheck/models/model_Qr_Code.dart';
 import 'package:legitcheck/models/model_User.dart';
+import 'package:legitcheck/viewmodels/view_Model_OwnOf_Products.dart';
+import 'package:legitcheck/viewmodels/view_Model_Qr_Code.dart';
+import 'package:legitcheck/viewmodels/view_Model_User.dart';
 import 'package:legitcheck/views/result_QR_Detail_Product.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 

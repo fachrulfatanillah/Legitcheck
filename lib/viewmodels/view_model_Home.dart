@@ -1,5 +1,7 @@
 import 'package:legitcheck/models/model_Categories.dart';
 import 'package:legitcheck/models/model_User_Products.dart';
+import 'package:legitcheck/viewmodels/view_Model_Categories.dart';
+import 'package:legitcheck/viewmodels/view_Model_User_Products.dart';
 
 class GetCategories {
   Future<List<Map<String, String>>> categories() async {

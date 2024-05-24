@@ -42,6 +42,8 @@ class _DetailProductPageState extends State<DetailProductPage> {
             onTap: () {
               Navigator.pop(context, 2);
             },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             child: Row(
               children: [
                 SizedBox(width: 10),

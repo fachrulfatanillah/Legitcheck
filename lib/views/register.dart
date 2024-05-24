@@ -133,7 +133,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      "Username :",
+                                      "Username",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
@@ -188,7 +188,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      "Email :",
+                                      "Email",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
@@ -242,7 +242,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      "Password :",
+                                      "Password",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
@@ -310,7 +310,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      "Verification Password :",
+                                      "Verification Password",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
@@ -397,14 +397,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                  // child: Text(
-                                  //   'Sign Up',
-                                  //   style: TextStyle(
-                                  //     color: Colors.white,
-                                  //     fontSize: 18,
-                                  //     fontWeight: FontWeight.bold,
-                                  //   ),
-                                  // ),
                                 ),
                               ),
                             )

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:legitcheck/models/model_OwnOf_Products.dart';
 import 'package:legitcheck/viewmodels/view_Model_Functions.dart';
+import 'package:legitcheck/viewmodels/view_Model_OwnOf_Products.dart';
 import 'package:legitcheck/viewmodels/view_Model_Profile.dart';
 import 'package:legitcheck/views/bottom_NavBar.dart';
 import 'package:provider/provider.dart';

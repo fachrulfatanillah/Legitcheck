@@ -35,6 +35,8 @@ class _ResultQrdetailProductPageState extends State<ResultQrdetailProductPage> {
                     builder: (_) => BottomNavBar(initialIndex: 1)),
               );
             },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             child: Row(
               children: [
                 SizedBox(width: 10),

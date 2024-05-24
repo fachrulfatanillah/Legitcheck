@@ -46,6 +46,8 @@ class _ClaimOwnershipPageState extends State<ClaimOwnershipPage> {
                 Navigator.pop(context, 2);
               });
             },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             child: Row(
               children: [
                 SizedBox(width: 10),

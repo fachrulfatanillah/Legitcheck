@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:legitcheck/models/model_OwnOf_Products.dart';
 import 'package:legitcheck/models/model_User.dart';
+import 'package:legitcheck/viewmodels/view_Model_OwnOf_Products.dart';
+import 'package:legitcheck/viewmodels/view_Model_User.dart';
 
 class ViewModelDetailProducts extends ChangeNotifier {
   Future<List<Map<String, String>>> listOwnOfProducts(

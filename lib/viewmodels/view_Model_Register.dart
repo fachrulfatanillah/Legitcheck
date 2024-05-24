@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:legitcheck/models/model_User.dart';
 import 'package:legitcheck/viewmodels/view_Model_Functions.dart';
+import 'package:legitcheck/viewmodels/view_Model_User.dart';
 import 'package:legitcheck/views/splash_Screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
