@@ -10,10 +10,6 @@ import 'package:legitcheck/views/result_QR_Detail_Product.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ViewModelQrScan extends ChangeNotifier {
-  String replaceSpaces(String code) {
-    return code.replaceAll(' ', '+');
-  }
-
   Future<void> resultQrCode(
       String data, BuildContext context, QRViewController dataCamera) async {
     if (data != '') {
@@ -112,6 +108,10 @@ class ViewModelQrScan extends ChangeNotifier {
     } else {
       return number.toString();
     }
+  }
+
+  String replaceSpaces(String code) {
+    return code.replaceAll(' ', '+');
   }
 
   Future<bool> resultQR(QrData qrData) async {

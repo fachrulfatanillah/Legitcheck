@@ -19,8 +19,17 @@ class ViewModelClaimNow extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text('password is empty.',
-                  style: TextStyle(color: Colors.white)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'password is empty.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -48,9 +57,16 @@ class ViewModelClaimNow extends ChangeNotifier {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
                 title: null,
-                content: Text(
-                  'Claim successful',
-                  style: TextStyle(color: Colors.white),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Center(
+                      child: Text(
+                        'Claim successful',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
                 actions: <Widget>[
                   TextButton(
@@ -79,8 +95,17 @@ class ViewModelClaimNow extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text('password is incorrect.',
-                  style: TextStyle(color: Colors.white)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'password is incorrect.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {

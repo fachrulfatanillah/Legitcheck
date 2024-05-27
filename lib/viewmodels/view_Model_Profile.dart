@@ -58,8 +58,10 @@ class ViewModelProfile extends ChangeNotifier {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text('Column cannot be empty',
-                style: TextStyle(color: Colors.white)),
+            content: Center(
+              child: Text('Column cannot be empty',
+                  style: TextStyle(color: Colors.white)),
+            ),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
@@ -82,8 +84,17 @@ class ViewModelProfile extends ChangeNotifier {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text('Incorrect Password',
-                style: TextStyle(color: Colors.white)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'Incorrect Password',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
@@ -106,8 +117,17 @@ class ViewModelProfile extends ChangeNotifier {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text('Password does not match',
-                style: TextStyle(color: Colors.white)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'Password does not match',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
@@ -130,9 +150,16 @@ class ViewModelProfile extends ChangeNotifier {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text(
-              'Password must contain at least 1 uppercase letter, 1 number, and 1 special character.',
-              style: TextStyle(color: Colors.white),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'Password must contain at least 1 uppercase letter, 1 number, and 1 special character.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
             ),
             actions: <Widget>[
               TextButton(
@@ -175,9 +202,16 @@ class ViewModelProfile extends ChangeNotifier {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text(
-              'Change Password Successful',
-              style: TextStyle(color: Colors.white),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'Change Password Successful',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
             ),
             actions: <Widget>[
               TextButton(

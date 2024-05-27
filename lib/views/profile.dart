@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:legitcheck/viewmodels/view_Model_Profile.dart';
+import 'package:legitcheck/viewmodels/view_Model_SnackBar.dart';
 import 'package:legitcheck/views/change_Password.dart';
 import 'package:legitcheck/views/snackBar.dart';
 import 'package:provider/provider.dart';
@@ -16,24 +17,6 @@ class _ProfilePageState extends State<ProfilePage> {
   final ViewModelProfile _viewModelProfile = ViewModelProfile();
   DateTime? lastPressed;
 
-  void showTopSnackBar(BuildContext context, String message) {
-    final overlay = Overlay.of(context);
-    final overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        top: 0,
-        left: 0,
-        right: 0,
-        child: TopSnackBar(message: message),
-      ),
-    );
-
-    overlay.insert(overlayEntry);
-
-    Future.delayed(Duration(seconds: 2), () {
-      overlayEntry.remove();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final bodyWidth = MediaQuery.of(context).size.width;
@@ -47,7 +30,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
           if (backButtonHasNotBeenPressedOrSnackBarHasBeenClosed) {
             lastPressed = now;
-            showTopSnackBar(context, 'Press back again to exit');
+            final snack = ShowSnackBar();
+            snack.showTopSnackBar(context, 'Press back again to exit');
             return false;
           }
           SystemNavigator.pop();

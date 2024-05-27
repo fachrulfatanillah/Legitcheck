@@ -38,8 +38,10 @@ class ViewModelSendOwnership extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text('Email and Password can not be empty',
-                  style: TextStyle(color: Colors.white)),
+              content: Center(
+                child: Text('Email and Password can not be empty',
+                    style: TextStyle(color: Colors.white)),
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -65,8 +67,10 @@ class ViewModelSendOwnership extends ChangeNotifier {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
                 title: null,
-                content: Text('Incorrect Password',
-                    style: TextStyle(color: Colors.white)),
+                content: Center(
+                  child: Text('Incorrect Password',
+                      style: TextStyle(color: Colors.white)),
+                ),
                 actions: <Widget>[
                   TextButton(
                     onPressed: () {
@@ -93,8 +97,10 @@ class ViewModelSendOwnership extends ChangeNotifier {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
                 title: null,
-                content: Text('Sent successfully',
-                    style: TextStyle(color: Colors.white)),
+                content: Center(
+                  child: Text('Sent successfully',
+                      style: TextStyle(color: Colors.white)),
+                ),
                 actions: <Widget>[
                   TextButton(
                     onPressed: () {
@@ -120,8 +126,17 @@ class ViewModelSendOwnership extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text('Email not found',
-                  style: TextStyle(color: Colors.white)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Email not found',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {

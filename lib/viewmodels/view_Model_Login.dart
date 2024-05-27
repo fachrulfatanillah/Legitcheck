@@ -16,6 +16,39 @@ class ViewModelLogin extends ChangeNotifier {
 
   Future<void> login(String email, String password) async {
     try {
+      if (email.isEmpty || password.isEmpty) {
+        return showDialog(
+          context: _context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              backgroundColor: Color.fromARGB(255, 23, 23, 23),
+              title: null,
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Email or password Can not be empty.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Center(
+                    child: Text('Close', style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      }
+
       UserGet userRepository = UserGet();
 
       List<User> users = await userRepository.getUsers();
@@ -54,8 +87,17 @@ class ViewModelLogin extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text('Email or password is incorrect.',
-                  style: TextStyle(color: Colors.white)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Email or password is incorrect.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {

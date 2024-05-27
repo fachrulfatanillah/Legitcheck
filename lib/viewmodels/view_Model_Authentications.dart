@@ -36,9 +36,16 @@ class Authentications extends ChangeNotifier {
                 return AlertDialog(
                   backgroundColor: Color.fromARGB(255, 23, 23, 23),
                   title: null,
-                  content: Text(
-                    'Reset Password successful.',
-                    style: TextStyle(color: Colors.white),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Center(
+                        child: Text(
+                          'Reset Password successful.',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ],
                   ),
                   actions: <Widget>[
                     TextButton(
@@ -67,9 +74,16 @@ class Authentications extends ChangeNotifier {
                 return AlertDialog(
                   backgroundColor: Color.fromARGB(255, 23, 23, 23),
                   title: null,
-                  content: Text(
-                    'Password must contain at least 1 uppercase letter, 1 number, and 1 special character.',
-                    style: TextStyle(color: Colors.white),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Center(
+                        child: Text(
+                          'Password must contain at least 1 uppercase letter, 1 number, and 1 special character.',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ],
                   ),
                   actions: <Widget>[
                     TextButton(
@@ -93,9 +107,16 @@ class Authentications extends ChangeNotifier {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
                 title: null,
-                content: Text(
-                  'Password and Verification Password does not match.',
-                  style: TextStyle(color: Colors.white),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Center(
+                      child: Text(
+                        'Password and Verification Password does not match.',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
                 actions: <Widget>[
                   TextButton(
@@ -118,9 +139,16 @@ class Authentications extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text(
-                'Password can not empty.',
-                style: TextStyle(color: Colors.white),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Password can not empty.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
               actions: <Widget>[
                 TextButton(
@@ -164,9 +192,16 @@ class Authentications extends ChangeNotifier {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text(
-              'OTP has been sent to your email, if it is not in your inbox, check your email spam.',
-              style: TextStyle(color: Colors.white),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'OTP has been sent to your email, if it is not in your inbox, check your email spam.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
             ),
             actions: <Widget>[
               TextButton(
@@ -223,9 +258,16 @@ class Authentications extends ChangeNotifier {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
                 title: null,
-                content: Text(
-                  'OTP has been sent to your email, if it is not in your inbox, check your email spam.',
-                  style: TextStyle(color: Colors.white),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Center(
+                      child: Text(
+                        'OTP has been sent to your email, if it is not in your inbox, check your email spam.',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
                 actions: <Widget>[
                   TextButton(
@@ -254,8 +296,17 @@ class Authentications extends ChangeNotifier {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
                 title: null,
-                content: Text('Email not found.',
-                    style: TextStyle(color: Colors.white)),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Center(
+                      child: Text(
+                        'Email not found.',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
                 actions: <Widget>[
                   TextButton(
                     onPressed: () {
@@ -278,8 +329,17 @@ class Authentications extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text('Please enter your email.',
-                  style: TextStyle(color: Colors.white)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Please enter your email.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {

@@ -57,8 +57,10 @@ class ViewModelRegister extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text('Column cannot be empty',
-                  style: TextStyle(color: Colors.white)),
+              content: Center(
+                child: Text('Column cannot be empty',
+                    style: TextStyle(color: Colors.white)),
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -81,8 +83,10 @@ class ViewModelRegister extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text('Email does not match',
-                  style: TextStyle(color: Colors.white)),
+              content: Center(
+                child: Text('Email does not match',
+                    style: TextStyle(color: Colors.white)),
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -105,8 +109,10 @@ class ViewModelRegister extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text('Email is registered',
-                  style: TextStyle(color: Colors.white)),
+              content: Center(
+                child: Text('Email is registered',
+                    style: TextStyle(color: Colors.white)),
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -129,8 +135,10 @@ class ViewModelRegister extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text('Password does not match',
-                  style: TextStyle(color: Colors.white)),
+              content: Center(
+                child: Text('Password does not match',
+                    style: TextStyle(color: Colors.white)),
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -153,9 +161,11 @@ class ViewModelRegister extends ChangeNotifier {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text(
-                'Password must contain at least 1 uppercase letter, 1 number, and 1 special character.',
-                style: TextStyle(color: Colors.white),
+              content: Center(
+                child: Text(
+                  'Password must contain at least 1 uppercase letter, 1 number, and 1 special character.',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               actions: <Widget>[
                 TextButton(
@@ -208,9 +218,16 @@ class ViewModelRegister extends ChangeNotifier {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text(
-              'Registration successful',
-              style: TextStyle(color: Colors.white),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'Registration successful',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
             ),
             actions: <Widget>[
               TextButton(

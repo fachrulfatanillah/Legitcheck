@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:legitcheck/viewmodels/view_Model_QrScan.dart';
+import 'package:legitcheck/viewmodels/view_Model_SnackBar.dart';
 import 'package:legitcheck/views/snackBar.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -41,24 +42,6 @@ class _ScanPageState extends State<ScanPage> {
     });
   }
 
-  void showTopSnackBar(BuildContext context, String message) {
-    final overlay = Overlay.of(context);
-    final overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        top: 0,
-        left: 0,
-        right: 0,
-        child: TopSnackBar(message: message),
-      ),
-    );
-
-    overlay.insert(overlayEntry);
-
-    Future.delayed(Duration(seconds: 2), () {
-      overlayEntry.remove();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -70,7 +53,8 @@ class _ScanPageState extends State<ScanPage> {
 
           if (backButtonHasNotBeenPressedOrSnackBarHasBeenClosed) {
             lastPressed = now;
-            showTopSnackBar(context, 'Press back again to exit');
+            final snack = ShowSnackBar();
+            snack.showTopSnackBar(context, 'Press back again to exit');
             return false;
           }
           controller?.pauseCamera();

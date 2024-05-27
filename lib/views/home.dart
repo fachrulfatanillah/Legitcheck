@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/services.dart';
 import 'package:legitcheck/viewmodels/view_Model_Profile.dart';
+import 'package:legitcheck/viewmodels/view_Model_SnackBar.dart';
 import 'package:legitcheck/viewmodels/view_model_Home.dart';
 import 'package:legitcheck/views/list_Products_Owned.dart';
 import 'package:legitcheck/views/snackBar.dart';
@@ -45,24 +46,6 @@ class _HomePageState extends State<HomePage> {
     filter = Filter();
   }
 
-  void showTopSnackBar(BuildContext context, String message) {
-    final overlay = Overlay.of(context);
-    final overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        top: 0,
-        left: 0,
-        right: 0,
-        child: TopSnackBar(message: message),
-      ),
-    );
-
-    overlay.insert(overlayEntry);
-
-    Future.delayed(Duration(seconds: 2), () {
-      overlayEntry.remove();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> items = widget.items;
@@ -77,7 +60,8 @@ class _HomePageState extends State<HomePage> {
 
           if (backButtonHasNotBeenPressedOrSnackBarHasBeenClosed) {
             lastPressed = now;
-            showTopSnackBar(context, 'Press back again to exit');
+            final snack = ShowSnackBar();
+            snack.showTopSnackBar(context, 'Press back again to exit');
             return false;
           }
           SystemNavigator.pop();
