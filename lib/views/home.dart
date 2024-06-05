@@ -239,7 +239,7 @@ class _HomePageState extends State<HomePage> {
                   width: bodyWidth * 0.9,
                 ),
                 Container(
-                  height: bodyHeight * 0.42,
+                  height: bodyHeight * 0.40,
                   width: bodyWidth * 0.9,
                   decoration: BoxDecoration(
                     border: Border.all(

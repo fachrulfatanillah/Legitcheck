@@ -1,6 +1,6 @@
 class APIConfigToken {
   static final String token =
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZhY2hydXJAZ21haWwuY29tIiwiaWF0IjoxNzE0Mzc2ODYzLCJleHAiOjE3MTY5Njg4NjN9.bGcQZcDVU2mSf1DJtcVWRoTP2j9aWl6LSsqv9mtrT4M';
+      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZhY2hydWwuZmF0YW5pbGxhaEBnbWFpbC5jb20iLCJpYXQiOjE3MTcwMDQ5MzgsImV4cCI6MTcxOTU5NjkzOH0.XBzH2V-d4Yhk1mnN5hS-wOqZCK6-9GiKmOc1HL8myEk';
 }
 
 class APIConfigUser {

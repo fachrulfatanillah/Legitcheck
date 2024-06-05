@@ -282,7 +282,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                       child: Text(
-                        'Log Out',
+                        'Logout',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,

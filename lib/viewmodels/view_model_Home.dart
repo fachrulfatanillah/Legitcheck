@@ -50,6 +50,7 @@ class GetProductsUser {
           'category': i.category,
         });
       }
+      print(data);
     } catch (e) {
       print(e);
     }
