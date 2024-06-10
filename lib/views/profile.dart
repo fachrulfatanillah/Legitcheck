@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:legitcheck/viewmodels/view_Model_Profile.dart';
 import 'package:legitcheck/viewmodels/view_Model_SnackBar.dart';
+import 'package:legitcheck/views/about.dart';
 import 'package:legitcheck/views/change_Password.dart';
-import 'package:legitcheck/views/snackBar.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -214,7 +214,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   width: bodyWidth * 0.9,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AboutPage()),
+                    );
+                  },
                   child: Container(
                     height: bodyHeight * 0.08,
                     width: bodyWidth * 0.9,
@@ -245,7 +250,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 width: bodyWidth * 0.64,
                                 // color: Colors.white,
                                 child: Text(
-                                  "Help",
+                                  "About",
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,

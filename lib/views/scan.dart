@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:legitcheck/viewmodels/view_Model_QrScan.dart';
 import 'package:legitcheck/viewmodels/view_Model_SnackBar.dart';
-import 'package:legitcheck/views/snackBar.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ScanPage extends StatefulWidget {

@@ -5,7 +5,6 @@ import 'package:legitcheck/viewmodels/view_Model_Profile.dart';
 import 'package:legitcheck/viewmodels/view_Model_SnackBar.dart';
 import 'package:legitcheck/viewmodels/view_model_Home.dart';
 import 'package:legitcheck/views/list_Products_Owned.dart';
-import 'package:legitcheck/views/snackBar.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
