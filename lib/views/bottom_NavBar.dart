@@ -1,3 +1,4 @@
+import 'package:legitcheck/viewmodels/view_model_Home.dart';
 import 'package:legitcheck/views/home.dart';
 import 'package:legitcheck/views/profile.dart';
 import 'package:legitcheck/views/scan.dart';
@@ -6,17 +7,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+  final int initialIndex;
+  const BottomNavBar({Key? key, this.initialIndex = 0});
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  List screens = [HomePage(), ScanPage(), ProfilePage()];
+  late List<Map<String, String>> categories = [];
 
   int currentIndex = 0;
   PageController controller = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+    currentIndex = widget.initialIndex;
+    controller = PageController(initialPage: currentIndex);
+    final getCategories = GetCategories();
+    getCategories.categories().then((result) {
+      setState(() {
+        categories = result;
+      });
+    });
+  }
 
   void nextPage(index) {
     setState(() {
@@ -25,22 +40,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
     });
   }
 
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      int? selectedIndex = ModalRoute.of(context)!.settings.arguments as int?;
-      if (selectedIndex != null) {
-        setState(() {
-          currentIndex = selectedIndex;
-          controller.jumpToPage(currentIndex);
-        });
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    List screens = [HomePage(categories), ScanPage(), ProfilePage()];
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         width: 90,
@@ -48,8 +52,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-            color: Colors.white, // Warna border
-            width: 6, // Lebar border
+            color: Colors.white,
+            width: 6,
           ),
         ),
         child: FloatingActionButton(
@@ -68,11 +72,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
       ),
       bottomNavigationBar: ClipRRect(
-        // borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
         child: BottomAppBar(
           height: 70,
           color: Color.fromARGB(255, 132, 132, 132),
-          // shape: CircularNotchedRectangle(),
           notchMargin: 8,
           child: Row(
             children: [
@@ -86,8 +88,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     size: 30,
                     color: currentIndex == 0 ? Colors.white : Colors.black,
                   ),
-                  splashColor:
-                      Colors.transparent, // Warna efek klik saat ditekan
+                  splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                 ),
               ),
@@ -101,8 +102,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     size: 30,
                     color: currentIndex == 2 ? Colors.white : Colors.black,
                   ),
-                  splashColor:
-                      Colors.transparent, // Warna efek klik saat ditekan
+                  splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                 ),
               ),

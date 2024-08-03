@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:legitcheck/view_models/view_Model_Profile.dart';
+import 'package:legitcheck/viewmodels/view_Model_Profile.dart';
 import 'package:provider/provider.dart';
 
 class ChangePasswordPage extends StatefulWidget {
@@ -34,17 +34,26 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   Widget build(BuildContext context) {
     final mediaQueryHeight = MediaQuery.of(context).size.height;
     final appBar = AppBar(
+      backgroundColor: Colors.black,
       title: Row(
         children: [
           InkWell(
             onTap: () {
               Navigator.pop(context, 2);
             },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             child: Row(
               children: [
                 SizedBox(width: 10),
-                Icon(Icons.arrow_back),
-                Text("Back"),
+                Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ),
+                Text(
+                  "Back",
+                  style: TextStyle(color: Colors.white),
+                ),
               ],
             ),
           ),
@@ -55,27 +64,17 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
     final bodyHeight = mediaQueryHeight -
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
-    // print(MediaQuery.of(context).padding.top);
 
     final bodyWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+            resizeToAvoidBottomInset: false,
             appBar: appBar,
             body: Container(
               height: bodyHeight,
               width: bodyWidth,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.white,
-                    Color(0xFF1E1E1E),
-                    Colors.white,
-                  ],
-                ),
-              ),
+              color: Colors.black,
               child: Column(
                 children: [
                   Container(
@@ -87,12 +86,13 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                         Container(
                           height: bodyHeight * 0.05,
                           width: bodyWidth * 0.9,
-                          // color: Colors.amber,
                           child: Center(
                             child: Text(
                               "CHANGE PASSWORD",
                               style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w900),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white),
                             ),
                           ),
                         )
@@ -102,16 +102,15 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   Container(
                     height: bodyHeight * 0.1,
                     width: bodyWidth * 0.9,
-                    // color: Colors.amber,
                     child: Text(
                       "Your Password must be at least 6 characters and should include a combination of numbers, letters and special characters",
                       textAlign: TextAlign.justify,
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                   Container(
                     height: bodyHeight * 0.08,
                     width: bodyWidth * 0.9,
-                    // color: const Color.fromARGB(255, 7, 205, 255),
                     child: Center(
                       child: TextField(
                         controller: _oldController,
@@ -120,12 +119,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                         autofocus: false,
                         decoration: InputDecoration(
                           filled: true,
-                          // fillColor: Color.fromARGB(255, 217, 217, 217),
-                          fillColor: const Color.fromARGB(255, 198, 198, 198),
+                          fillColor: Color.fromARGB(0, 198, 198, 198),
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: 'Current Password',
                           hintStyle: TextStyle(
-                            color: Color.fromARGB(255, 101, 101, 101),
+                            color: Color.fromARGB(255, 255, 255, 255),
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
@@ -136,8 +134,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                             borderRadius: BorderRadius.circular(15),
                             borderSide: BorderSide(
                                 color:
-                                    Colors.black), // Warna border saat terfokus
+                                    const Color.fromARGB(255, 255, 255, 255)),
                           ),
+                        ),
+                        style: TextStyle(
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -153,44 +154,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                         autofocus: false,
                         decoration: InputDecoration(
                           filled: true,
-                          // fillColor: Color.fromARGB(255, 217, 217, 217),
-                          fillColor: const Color.fromARGB(255, 198, 198, 198),
+                          fillColor: Color.fromARGB(0, 198, 198, 198),
                           contentPadding: EdgeInsets.all(10.0),
                           hintText: 'New Password',
                           hintStyle: TextStyle(
-                            color: Color.fromARGB(255, 101, 101, 101),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(
-                                color: Color.fromARGB(255, 255, 255, 255)),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(color: Colors.black),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: bodyHeight * 0.08,
-                    width: bodyWidth * 0.9,
-                    // color: const Color.fromARGB(255, 7, 205, 255),
-                    child: Center(
-                      child: TextField(
-                        controller: _verifypasswordController,
-                        obscureText: _obscureText,
-                        autocorrect: false,
-                        autofocus: false,
-                        decoration: InputDecoration(
-                          filled: true,
-                          // fillColor: Color.fromARGB(255, 217, 217, 217),
-                          fillColor: const Color.fromARGB(255, 198, 198, 198),
-                          contentPadding: EdgeInsets.all(10.0),
-                          hintText: 'Veryfy Password',
-                          hintStyle: TextStyle(
-                            color: Color.fromARGB(255, 101, 101, 101),
+                            color: Color.fromARGB(255, 255, 255, 255),
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
@@ -201,7 +169,42 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                             borderRadius: BorderRadius.circular(15),
                             borderSide: BorderSide(
                                 color:
-                                    Colors.black), // Warna border saat terfokus
+                                    const Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                        ),
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: bodyHeight * 0.08,
+                    width: bodyWidth * 0.9,
+                    child: Center(
+                      child: TextField(
+                        controller: _verifypasswordController,
+                        obscureText: _obscureText,
+                        autocorrect: false,
+                        autofocus: false,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color.fromARGB(0, 198, 198, 198),
+                          contentPadding: EdgeInsets.all(10.0),
+                          hintText: 'Veryfy Password',
+                          hintStyle: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide: BorderSide(
+                                color:
+                                    const Color.fromARGB(255, 244, 244, 244)),
                           ),
                           suffixIcon: IconButton(
                             icon: Icon(
@@ -216,23 +219,26 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                             },
                           ),
                         ),
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
                   Container(
                     width: bodyWidth,
                     height: bodyHeight * 0.1,
-                    // color: Color.fromARGB(55, 77, 255, 7),
                     child: Center(
                       child: ElevatedButton(
                         onPressed: () {
                           saveChangePassword(context);
                         },
                         style: ElevatedButton.styleFrom(
-                          textStyle: TextStyle(fontSize: 18),
-                          minimumSize: Size(bodyWidth * 0.4, bodyHeight * 0.06),
-                          backgroundColor: Colors.black,
-                        ),
+                            textStyle: TextStyle(fontSize: 18),
+                            minimumSize:
+                                Size(bodyWidth * 0.4, bodyHeight * 0.06),
+                            backgroundColor: Colors.black,
+                            side: BorderSide(color: Colors.white)),
                         child: Text(
                           'Save',
                           style: TextStyle(

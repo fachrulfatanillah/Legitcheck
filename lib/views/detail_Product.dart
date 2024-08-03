@@ -1,29 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:legitcheck/viewmodels/view_Model_DetailProduct.dart';
+import 'package:legitcheck/views/list_Of_Owners_Product_Detail.dart';
 import 'package:legitcheck/views/send_Ownership.dart';
 
 class DetailProductPage extends StatefulWidget {
-  const DetailProductPage({Key? key}) : super(key: key);
+  final Map<String, String> product;
+  const DetailProductPage({Key? key, required this.product}) : super(key: key);
 
   @override
   State<DetailProductPage> createState() => _DetailProductPageState();
 }
 
 class _DetailProductPageState extends State<DetailProductPage> {
+  late List<Map<String, String>> owners = [];
+  bool isLoading = true;
+
   @override
+  void initState() {
+    super.initState();
+    final getOwnProducts = ViewModelDetailProducts();
+    getOwnProducts.listOwnOfProducts(widget.product, context).then((data) {
+      setState(() {
+        isLoading = true;
+        Future.delayed(Duration(milliseconds: 10), () {
+          setState(() {
+            owners = data;
+            isLoading = false;
+          });
+        });
+      });
+    });
+  }
+
   Widget build(BuildContext context) {
     final mediaQueryHeight = MediaQuery.of(context).size.height;
     final appBar = AppBar(
+      backgroundColor: Colors.black,
       title: Row(
         children: [
           InkWell(
             onTap: () {
               Navigator.pop(context, 2);
             },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             child: Row(
               children: [
                 SizedBox(width: 10),
-                Icon(Icons.arrow_back),
-                Text("Back"),
+                Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ),
+                Text(
+                  "Back",
+                  style: TextStyle(color: Colors.white),
+                ),
               ],
             ),
           ),
@@ -35,12 +66,6 @@ class _DetailProductPageState extends State<DetailProductPage> {
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
 
-    final List<Map<String, String>> owners = [
-      {'title': 'First Owner', 'email': 'First@gmail.com'},
-      {'title': 'Second Owner', 'email': 'Second@gmail.com'},
-      {'title': 'Current Owner', 'email': 'Current@gmail.com'},
-    ];
-
     final bodyWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -49,17 +74,18 @@ class _DetailProductPageState extends State<DetailProductPage> {
             body: Container(
               height: bodyHeight,
               width: bodyWidth,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.white,
-                    Color(0xFF1E1E1E),
-                    Colors.white,
-                  ],
-                ),
-              ),
+              color: Colors.black,
+              // decoration: BoxDecoration(
+              //   gradient: LinearGradient(
+              //     begin: Alignment.topCenter,
+              //     end: Alignment.bottomCenter,
+              //     colors: [
+              //       Colors.white,
+              //       Color(0xFF1E1E1E),
+              //       Colors.white,
+              //     ],
+              //   ),
+              // ),
               child: Column(
                 children: [
                   Container(
@@ -68,12 +94,12 @@ class _DetailProductPageState extends State<DetailProductPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                        color: Colors.black,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         width: 1,
                       ),
                       image: DecorationImage(
                         image: NetworkImage(
-                          'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b7d9211c-26e7-431a-ac24-b0540fb3c00f/air-force-1-07-shoes-WrLlWX.png',
+                          'https://legitcheck.online/public/storage/storage/assets/images/products/${widget.product['photo']}',
                         ),
                         fit: BoxFit.cover,
                       ),
@@ -82,14 +108,12 @@ class _DetailProductPageState extends State<DetailProductPage> {
                   Container(
                       height: bodyHeight * 0.05,
                       width: bodyWidth * 0.9,
-                      // color: Colors.amber,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
                             height: bodyHeight * 0.03,
                             width: bodyWidth * 0.9,
-                            // color: const Color.fromARGB(255, 7, 255, 123),
                             child: Text(
                               "Merk",
                               style: TextStyle(
@@ -107,7 +131,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       borderRadius: BorderRadius.circular(10),
                       color: Color.fromARGB(70, 158, 158, 158),
                       border: Border.all(
-                        color: Colors.black,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         width: 1,
                       ),
                     ),
@@ -115,12 +139,17 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 16.0),
-                        child: Text(
-                          "NIKE",
-                          style: TextStyle(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            widget.product['name']!,
+                            style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,
-                              fontWeight: FontWeight.w500),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -128,14 +157,12 @@ class _DetailProductPageState extends State<DetailProductPage> {
                   Container(
                       height: bodyHeight * 0.04,
                       width: bodyWidth * 0.9,
-                      // color: Colors.amber,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
                             height: bodyHeight * 0.03,
                             width: bodyWidth * 0.9,
-                            // color: const Color.fromARGB(255, 7, 255, 123),
                             child: Text(
                               "Type",
                               style: TextStyle(
@@ -153,7 +180,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       borderRadius: BorderRadius.circular(10),
                       color: Color.fromARGB(70, 158, 158, 158),
                       border: Border.all(
-                        color: Colors.black,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         width: 1,
                       ),
                     ),
@@ -161,12 +188,17 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 16.0),
-                        child: Text(
-                          "Air Force 1",
-                          style: TextStyle(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            widget.product['description']!,
+                            style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,
-                              fontWeight: FontWeight.w500),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -174,16 +206,14 @@ class _DetailProductPageState extends State<DetailProductPage> {
                   Container(
                       height: bodyHeight * 0.04,
                       width: bodyWidth * 0.9,
-                      // color: Colors.amber,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
                             height: bodyHeight * 0.03,
                             width: bodyWidth * 0.9,
-                            // color: const Color.fromARGB(255, 7, 255, 123),
                             child: Text(
-                              "Size, Color",
+                              "Size",
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,
@@ -199,7 +229,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       borderRadius: BorderRadius.circular(10),
                       color: Color.fromARGB(70, 158, 158, 158),
                       border: Border.all(
-                        color: Colors.black,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         width: 1,
                       ),
                     ),
@@ -208,7 +238,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 16.0),
                         child: Text(
-                          "38, White",
+                          widget.product['size']!,
                           style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,
@@ -220,7 +250,6 @@ class _DetailProductPageState extends State<DetailProductPage> {
                   Container(
                       height: bodyHeight * 0.04,
                       width: bodyWidth * 0.9,
-                      // color: Colors.amber,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -233,39 +262,26 @@ class _DetailProductPageState extends State<DetailProductPage> {
                   Container(
                     height: bodyHeight * 0.25,
                     width: bodyWidth * 0.9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color.fromARGB(70, 158, 158, 158),
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 1,
-                      ),
-                    ),
-                    child: ListView.builder(
-                      itemCount: owners.length,
-                      itemBuilder: (context, index) {
-                        final owner = owners[index];
-                        return ListTile(
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-                          title: Text(
-                            owner['title']!,
-                            style: TextStyle(fontSize: 16, color: Colors.white),
+                    child: isLoading
+                        ? Center(
+                            child: SizedBox(
+                              height: bodyHeight * 0.05,
+                              width: bodyWidth * 0.1,
+                              child: CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(Colors.white),
+                              ),
+                            ),
+                          )
+                        : ListOfOwnersDetailProduct(
+                            owners: owners,
+                            height: bodyHeight * 0.25,
+                            width: bodyWidth * 0.9,
                           ),
-                          subtitle: Text(
-                            owner['email']!,
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color.fromARGB(255, 225, 225, 225)),
-                          ),
-                        );
-                      },
-                    ),
                   ),
                   Container(
                     height: bodyHeight * 0.1,
                     width: bodyWidth * 0.9,
-                    // color: Colors.amber,
                     child: Center(
                       child: Center(
                         child: ElevatedButton(
@@ -273,7 +289,8 @@ class _DetailProductPageState extends State<DetailProductPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => SendOwnershipPage(),
+                                builder: (context) =>
+                                    SendOwnershipPage(product: widget.product),
                               ),
                             );
                           },
@@ -282,6 +299,10 @@ class _DetailProductPageState extends State<DetailProductPage> {
                             minimumSize:
                                 Size(bodyWidth * 0.4, bodyHeight * 0.06),
                             backgroundColor: Colors.black,
+                            side: BorderSide(
+                              color: Colors.white, // Warna border
+                              width: 2,
+                            ),
                           ),
                           child: Text(
                             'Send Ownership',
@@ -296,7 +317,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                     ),
                   ),
                 ],
-              ), //Code below
+              ),
             )));
   }
 }

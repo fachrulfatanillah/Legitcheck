@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:legitcheck/models/model_User.dart';
-import 'package:legitcheck/view_models/view_Model_Functions.dart';
+import 'package:legitcheck/viewmodels/view_Model_Functions.dart';
+import 'package:legitcheck/viewmodels/view_Model_User.dart';
 import 'package:legitcheck/views/loginOrRegister.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -48,18 +48,25 @@ class ViewModelProfile extends ChangeNotifier {
       String newPassword,
       String verifyPassword,
       BuildContext context) async {
-    final encryptionService = EncryptionService();
-    final encryptedData_oldPassword = encryptionService.encrypt(oldPassword);
-
     if (oldPassword.isEmpty || newPassword.isEmpty || verifyPassword.isEmpty) {
       return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text('Column cannot be empty',
-                style: TextStyle(color: Colors.white)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'Column cannot be empty.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
@@ -74,16 +81,28 @@ class ViewModelProfile extends ChangeNotifier {
         },
       );
     }
+    final encryptionService = EncryptionService();
+    final encryptedData_oldPassword = encryptionService.encrypt(oldPassword);
 
     if (userPassword != encryptedData_oldPassword) {
       return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text('Incorrect Password',
-                style: TextStyle(color: Colors.white)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'Incorrect Password',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
@@ -102,12 +121,22 @@ class ViewModelProfile extends ChangeNotifier {
     if (newPassword != verifyPassword) {
       return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text('Password does not match',
-                style: TextStyle(color: Colors.white)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'Password does not match',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
@@ -126,13 +155,21 @@ class ViewModelProfile extends ChangeNotifier {
     if (!PasswordValidator.isValidPassword(newPassword)) {
       return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text(
-              'Password must contain at least 1 uppercase letter, 1 number, and 1 special character.',
-              style: TextStyle(color: Colors.white),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'Password must contain at least 1 uppercase letter, 1 number, and 1 special character.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
             ),
             actions: <Widget>[
               TextButton(
@@ -171,13 +208,21 @@ class ViewModelProfile extends ChangeNotifier {
       notifyListeners();
       showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Text(
-              'Change Password Successful',
-              style: TextStyle(color: Colors.white),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'Change Password Successful',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
             ),
             actions: <Widget>[
               TextButton(

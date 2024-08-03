@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:legitcheck/view_models/view_Model_Login.dart';
+import 'package:legitcheck/viewmodels/view_Model_Login.dart';
+import 'package:legitcheck/views/forgot_Password.dart';
 import 'package:legitcheck/views/loginOrRegister.dart';
 import 'package:legitcheck/views/register.dart';
 
@@ -33,12 +34,6 @@ class _LoginPageState extends State<LoginPage> {
 
       viewModel.login(email, password);
     });
-    // String email = _emailController.text;
-    // String password = _passwordController.text;
-
-    // ViewModelLogin viewModel = ViewModelLogin(email, password, context);
-
-    // viewModel.login(email, password);
   }
 
   @override
@@ -98,18 +93,12 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Container(
                   width: bodyWidth * 0.9,
-                  height: bodyHeight * 0.5,
-                  // decoration: BoxDecoration(
-                  //     border: Border.all(
-                  //   color: Colors.white,
-                  //   width: 2.0,
-                  // )),
+                  height: bodyHeight * 0.55,
                   child: Column(
                     children: [
                       Container(
                         width: bodyWidth,
                         height: bodyHeight * 0.05,
-                        // color: Colors.amber,
                         child: Center(
                           child: Text(
                             "LOGIN",
@@ -123,7 +112,6 @@ class _LoginPageState extends State<LoginPage> {
                       Container(
                         width: bodyWidth,
                         height: bodyHeight * 0.05,
-                        // color: Colors.amber,
                         child: Center(
                           child: Text(
                             "Enter to your account",
@@ -136,21 +124,19 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Container(
                         width: bodyWidth * 0.8,
-                        height: bodyHeight * 0.39,
-                        // color: Color.fromARGB(55, 77, 255, 7),
+                        height: bodyHeight * 0.44,
                         child: Column(
                           children: [
                             Container(
                               width: bodyWidth,
                               height: bodyHeight * 0.05,
-                              // color: Color.fromARGB(55, 77, 255, 7),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
                                     child: Text(
-                                      "Email :",
+                                      "Email",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
@@ -204,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                                 children: [
                                   Container(
                                     child: Text(
-                                      "Password :",
+                                      "Password",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
@@ -221,19 +207,15 @@ class _LoginPageState extends State<LoginPage> {
                               padding: EdgeInsets.symmetric(),
                               child: TextField(
                                 controller: _passwordController,
-                                obscureText:
-                                    _obscureText, // Untuk menyembunyikan teks saat mengetik
+                                obscureText: _obscureText,
                                 autocorrect: false,
                                 autofocus: false,
                                 decoration: InputDecoration(
                                   filled: true,
-                                  fillColor: Colors
-                                      .black, // Warna latar belakang hitam
-                                  contentPadding: EdgeInsets.all(
-                                      10.0), // Memberikan padding konten
+                                  fillColor: Colors.black,
+                                  contentPadding: EdgeInsets.all(10.0),
                                   hintStyle: TextStyle(
-                                    color: Color.fromARGB(255, 35, 35,
-                                        35), // Warna placeholder/hint
+                                    color: Color.fromARGB(255, 35, 35, 35),
                                   ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
@@ -252,8 +234,8 @@ class _LoginPageState extends State<LoginPage> {
                                     icon: Icon(
                                       _obscureText
                                           ? Icons.visibility_off
-                                          : Icons.visibility, // Ikon mata
-                                      color: Colors.white, // Warna ikon putih
+                                          : Icons.visibility,
+                                      color: Colors.white,
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -267,9 +249,35 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                             ),
+                            //forgot password
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ForgotPasswordPage()),
+                                );
+                              },
+                              child: Container(
+                                width: bodyWidth,
+                                height: bodyHeight * 0.05,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    "forgot password?",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+
                             Container(
                               width: bodyWidth,
-                              height: bodyHeight * 0.11,
+                              height: bodyHeight * 0.08,
                               child: Center(
                                 child: ElevatedButton(
                                   onPressed: isLoading ? null : login,
@@ -279,8 +287,8 @@ class _LoginPageState extends State<LoginPage> {
                                         bodyWidth * 0.5, bodyHeight * 0.07),
                                     backgroundColor: Colors.black,
                                     side: BorderSide(
-                                      color: Colors.white, // Warna border
-                                      width: 2, // Lebar border
+                                      color: Colors.white,
+                                      width: 2,
                                     ),
                                   ),
                                   child: isLoading
@@ -301,7 +309,6 @@ class _LoginPageState extends State<LoginPage> {
                             Container(
                               width: bodyWidth,
                               height: bodyHeight * 0.05,
-                              // color: Colors.amber,
                               child: Center(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -344,7 +351,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Container(
                   width: bodyWidth * 0.9,
-                  height: bodyHeight * 0.5,
+                  height: bodyHeight * 0.45,
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,

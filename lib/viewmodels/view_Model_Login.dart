@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:legitcheck/models/model_User.dart';
-import 'package:legitcheck/view_models/view_Model_Functions.dart';
+import 'package:legitcheck/viewmodels/view_Model_Functions.dart';
+import 'package:legitcheck/viewmodels/view_Model_User.dart';
 import 'package:legitcheck/views/splash_Screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,6 +16,40 @@ class ViewModelLogin extends ChangeNotifier {
 
   Future<void> login(String email, String password) async {
     try {
+      if (email.isEmpty || password.isEmpty) {
+        return showDialog(
+          context: _context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              backgroundColor: Color.fromARGB(255, 23, 23, 23),
+              title: null,
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Email or password Can not be empty.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Center(
+                    child: Text('Close', style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      }
+
       UserGet userRepository = UserGet();
 
       List<User> users = await userRepository.getUsers();
@@ -49,12 +84,22 @@ class ViewModelLogin extends ChangeNotifier {
       } else {
         return showDialog(
           context: _context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Text('Email or password is incorrect.',
-                  style: TextStyle(color: Colors.white)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Email or password is incorrect.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {

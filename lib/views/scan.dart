@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:legitcheck/views/result_QR_Detail_Product.dart';
+import 'package:flutter/services.dart';
+import 'package:legitcheck/viewmodels/view_Model_QrScan.dart';
+import 'package:legitcheck/viewmodels/view_Model_SnackBar.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-// import 'result_qr_scanner.dart';
 
 class ScanPage extends StatefulWidget {
   @override
@@ -13,26 +14,64 @@ class _ScanPageState extends State<ScanPage> {
 
   Barcode? result;
   QRViewController? controller;
+  bool isLoading = false;
+  DateTime? lastPressed;
+
+  void _onQRViewCreated(QRViewController controller) {
+    setState(() {
+      this.controller = controller;
+    });
+    controller.scannedDataStream.listen((scanData) {
+      setState(() {
+        result = scanData;
+      });
+      String codeString = result?.code ?? '';
+      ViewModelQrScan viewModelScan = ViewModelQrScan();
+      isLoading = true;
+      controller.pauseCamera();
+      Future.delayed(Duration(milliseconds: 200), () {
+        viewModelScan.resultQrCode(codeString, context, controller);
+        setState(() {
+          isLoading = false;
+          controller.resumeCamera();
+        });
+      });
+
+      // controller.dispose();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          _buildQrView(context),
-          // Positioned(
-          //   bottom: 20,
-          //   child: result != null
-          //       ? Text(
-          //           'Barcode hasil scan: ${result!.code}',
-          //           style: TextStyle(fontSize: 20),
-          //         )
-          //       : SizedBox.shrink(),
-          // ),
-        ],
-      ),
-    );
+    return WillPopScope(
+        onWillPop: () async {
+          final now = DateTime.now();
+          final backButtonHasNotBeenPressedOrSnackBarHasBeenClosed =
+              lastPressed == null ||
+                  now.difference(lastPressed!) > Duration(seconds: 2);
+
+          if (backButtonHasNotBeenPressedOrSnackBarHasBeenClosed) {
+            lastPressed = now;
+            final snack = ShowSnackBar();
+            snack.showTopSnackBar(context, 'Press back again to exit');
+            return false;
+          }
+          controller?.pauseCamera();
+          SystemNavigator.pop();
+          return true;
+        },
+        child: Scaffold(
+          body: Stack(
+            alignment: Alignment.center,
+            children: [
+              _buildQrView(context),
+              if (isLoading)
+                CircularProgressIndicator(
+                  color: Colors.red, // Warna loader
+                ),
+            ],
+          ),
+        ));
   }
 
   Widget _buildQrView(BuildContext context) {
@@ -47,27 +86,6 @@ class _ScanPageState extends State<ScanPage> {
         cutOutSize: 300,
       ),
     );
-  }
-
-  void _onQRViewCreated(QRViewController controller) {
-    setState(() {
-      this.controller = controller;
-    });
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-      });
-      // Jika berhasil mendapatkan data QR, navigasi ke halaman result
-      if (result != null && result!.code != null && result!.code!.isNotEmpty) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            // builder: (context) => ResultPage(qrData: result!.code!),
-            builder: (context) => ResultQrdetailProductPage(),
-          ),
-        );
-      }
-    });
   }
 
   @override
