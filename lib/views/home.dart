@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                       aspectRatio: 2,
                       viewportFraction: 1,
                       autoPlayInterval: Duration(seconds: 3),
-                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayAnimationDuration: Duration(milliseconds: 900),
                       autoPlayCurve: Curves.fastOutSlowIn,
                       enlargeCenterPage: true,
                     ),
@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                       aspectRatio: 2,
                       viewportFraction: 1,
                       autoPlayInterval: Duration(seconds: 7),
-                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayAnimationDuration: Duration(milliseconds: 1000),
                       autoPlayCurve: Curves.fastOutSlowIn,
                       enlargeCenterPage: true,
                     ),
@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         child: Center(
                           child: Text(
-                            "5 Hari Lagi Selesai Project TA",
+                            "Welcome To LegitCheck",
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
@@ -220,10 +220,10 @@ class _HomePageState extends State<HomePage> {
                                 child: Text(
                                   items[index]['title']!,
                                   style: TextStyle(
-                                    color: isSelected
-                                        ? Colors.black
-                                        : Colors.white,
-                                  ),
+                                      color: isSelected
+                                          ? Colors.black
+                                          : Colors.white,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ),
                             ),
@@ -245,7 +245,7 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.white,
                       width: 2.0,
                     ),
-                    color: Color.fromARGB(255, 117, 117, 117),
+                    color: Color.fromARGB(255, 0, 0, 0),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: isLoading

@@ -48,19 +48,24 @@ class ViewModelProfile extends ChangeNotifier {
       String newPassword,
       String verifyPassword,
       BuildContext context) async {
-    final encryptionService = EncryptionService();
-    final encryptedData_oldPassword = encryptionService.encrypt(oldPassword);
-
     if (oldPassword.isEmpty || newPassword.isEmpty || verifyPassword.isEmpty) {
       return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
             title: null,
-            content: Center(
-              child: Text('Column cannot be empty',
-                  style: TextStyle(color: Colors.white)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(
+                  child: Text(
+                    'Column cannot be empty.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
             ),
             actions: <Widget>[
               TextButton(
@@ -76,10 +81,13 @@ class ViewModelProfile extends ChangeNotifier {
         },
       );
     }
+    final encryptionService = EncryptionService();
+    final encryptedData_oldPassword = encryptionService.encrypt(oldPassword);
 
     if (userPassword != encryptedData_oldPassword) {
       return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -113,6 +121,7 @@ class ViewModelProfile extends ChangeNotifier {
     if (newPassword != verifyPassword) {
       return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -146,6 +155,7 @@ class ViewModelProfile extends ChangeNotifier {
     if (!PasswordValidator.isValidPassword(newPassword)) {
       return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -198,6 +208,7 @@ class ViewModelProfile extends ChangeNotifier {
       notifyListeners();
       showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),

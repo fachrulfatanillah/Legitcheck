@@ -53,13 +53,21 @@ class ViewModelRegister extends ChangeNotifier {
           confirmPassword.isEmpty) {
         return showDialog(
           context: _context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Center(
-                child: Text('Column cannot be empty',
-                    style: TextStyle(color: Colors.white)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Column cannot be empty.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
               actions: <Widget>[
                 TextButton(
@@ -79,13 +87,21 @@ class ViewModelRegister extends ChangeNotifier {
       if (!EmailValidator.isValidEmail(email)) {
         return showDialog(
           context: _context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Center(
-                child: Text('Email does not match',
-                    style: TextStyle(color: Colors.white)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Email does not match',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
               actions: <Widget>[
                 TextButton(
@@ -105,13 +121,21 @@ class ViewModelRegister extends ChangeNotifier {
       if (isEmailRegistered) {
         return showDialog(
           context: _context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Center(
-                child: Text('Email is registered',
-                    style: TextStyle(color: Colors.white)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Email is registered',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
               actions: <Widget>[
                 TextButton(
@@ -131,13 +155,21 @@ class ViewModelRegister extends ChangeNotifier {
       if (_password != _confirmPassword) {
         return showDialog(
           context: _context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Center(
-                child: Text('Password does not match',
-                    style: TextStyle(color: Colors.white)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Password does not match',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
               actions: <Widget>[
                 TextButton(
@@ -157,15 +189,21 @@ class ViewModelRegister extends ChangeNotifier {
       if (!PasswordValidator.isValidPassword(password)) {
         return showDialog(
           context: _context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content: Center(
-                child: Text(
-                  'Password must contain at least 1 uppercase letter, 1 number, and 1 special character.',
-                  style: TextStyle(color: Colors.white),
-                ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Password must contain at least 1 uppercase letter, 1 number, and 1 special character.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
               actions: <Widget>[
                 TextButton(
@@ -214,6 +252,7 @@ class ViewModelRegister extends ChangeNotifier {
 
       showDialog(
         context: _context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),

@@ -139,12 +139,17 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 16.0),
-                        child: Text(
-                          widget.product['name']!,
-                          style: TextStyle(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            widget.product['name']!,
+                            style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,
-                              fontWeight: FontWeight.w500),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -183,12 +188,17 @@ class _DetailProductPageState extends State<DetailProductPage> {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 16.0),
-                        child: Text(
-                          widget.product['description']!,
-                          style: TextStyle(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            widget.product['description']!,
+                            style: TextStyle(
                               fontSize: 16,
                               color: Colors.white,
-                              fontWeight: FontWeight.w500),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ),
                     ),

@@ -10,8 +10,8 @@ class TopSnackBar extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: Container(
-        margin: EdgeInsets.only(top: 35.0),
-        padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+        // margin: EdgeInsets.only(top: 35.0),
+        padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 28.0),
         color: Colors.black,
         child: Center(
           child: Text(

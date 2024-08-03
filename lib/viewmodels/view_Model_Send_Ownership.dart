@@ -34,6 +34,7 @@ class ViewModelSendOwnership extends ChangeNotifier {
       if (email.isEmpty || password.isEmpty) {
         return showDialog(
           context: context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -70,6 +71,7 @@ class ViewModelSendOwnership extends ChangeNotifier {
         if (encryptedData_Password != userPassword) {
           return showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (BuildContext context) {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -107,6 +109,7 @@ class ViewModelSendOwnership extends ChangeNotifier {
               qrcode_id, await isValidEmail(email) ?? '');
           return showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (BuildContext context) {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -143,6 +146,7 @@ class ViewModelSendOwnership extends ChangeNotifier {
       } else {
         return showDialog(
           context: context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),

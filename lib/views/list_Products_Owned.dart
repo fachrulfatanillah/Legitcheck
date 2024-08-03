@@ -38,6 +38,7 @@ class _ListProductsOwnState extends State<ListProductsOwn> {
         ),
       ),
       title: Text(
+        maxLines: 1,
         widget.product['name']!,
         style: TextStyle(color: Colors.white, fontSize: 18),
       ),

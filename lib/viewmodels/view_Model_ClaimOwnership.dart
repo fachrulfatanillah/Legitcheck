@@ -15,6 +15,7 @@ class ViewModelClaimNow extends ChangeNotifier {
       if (password == '') {
         return showDialog(
           context: context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -53,6 +54,7 @@ class ViewModelClaimNow extends ChangeNotifier {
 
           showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (BuildContext context) {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -91,6 +93,7 @@ class ViewModelClaimNow extends ChangeNotifier {
       } else {
         return showDialog(
           context: context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),

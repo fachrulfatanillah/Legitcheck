@@ -127,12 +127,17 @@ class _ResultQrdetailProductPageState extends State<ResultQrdetailProductPage> {
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 16.0),
-                          child: Text(
-                            "${widget.qrData.name}",
-                            style: TextStyle(
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "${widget.qrData.name}",
+                              style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w500),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -173,12 +178,17 @@ class _ResultQrdetailProductPageState extends State<ResultQrdetailProductPage> {
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 16.0),
-                          child: Text(
-                            "${widget.qrData.description}",
-                            style: TextStyle(
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "${widget.qrData.description}",
+                              style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w500),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -220,7 +230,7 @@ class _ResultQrdetailProductPageState extends State<ResultQrdetailProductPage> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 16.0),
                           child: Text(
-                            "38",
+                            "${widget.qrData.size}",
                             style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,

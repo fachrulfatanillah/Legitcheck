@@ -38,6 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
           return true;
         },
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: Container(
             height: bodyHeight,
             width: bodyWidth,
@@ -87,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Center(
                           child: Container(
                             width: bodyWidth * 0.2,
-                            height: bodyHeight * 0.09,
+                            height: bodyHeight * 0.098,
                             decoration: BoxDecoration(
                               color: Color.fromARGB(255, 136, 136, 136),
                               borderRadius: BorderRadius.circular(50),
@@ -116,15 +117,20 @@ class _ProfilePageState extends State<ProfilePage> {
                                   Container(
                                     width: bodyWidth * 0.60,
                                     height: bodyHeight * 0.04,
-                                    child: Text(
-                                      Provider.of<ViewModelProfile>(context)
-                                          .username,
-                                      style: TextStyle(
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        Provider.of<ViewModelProfile>(context)
+                                            .username,
+                                        style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,
-                                          color: Colors.white),
+                                          color: Colors.white,
+                                        ),
+                                      ),
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
@@ -137,18 +143,23 @@ class _ProfilePageState extends State<ProfilePage> {
                                   Container(
                                     width: bodyWidth * 0.60,
                                     height: bodyHeight * 0.04,
-                                    child: Text(
-                                      Provider.of<ViewModelProfile>(context)
-                                          .email,
-                                      style: TextStyle(
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        Provider.of<ViewModelProfile>(context)
+                                            .email,
+                                        style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w400,
-                                          color: Colors.white),
+                                          color: Colors.white,
+                                        ),
+                                      ),
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
-                            ),
+                            )
                           ],
                         ),
                       ),

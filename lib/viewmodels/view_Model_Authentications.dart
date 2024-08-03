@@ -32,6 +32,7 @@ class Authentications extends ChangeNotifier {
 
             return showDialog(
               context: context,
+              barrierDismissible: false,
               builder: (BuildContext context) {
                 return AlertDialog(
                   backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -70,6 +71,7 @@ class Authentications extends ChangeNotifier {
           } else {
             return showDialog(
               context: context,
+              barrierDismissible: false,
               builder: (BuildContext context) {
                 return AlertDialog(
                   backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -103,6 +105,7 @@ class Authentications extends ChangeNotifier {
         } else {
           return showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (BuildContext context) {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -135,6 +138,7 @@ class Authentications extends ChangeNotifier {
       } else {
         return showDialog(
           context: context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -188,6 +192,7 @@ class Authentications extends ChangeNotifier {
 
       return showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -254,6 +259,7 @@ class Authentications extends ChangeNotifier {
 
           return showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (BuildContext context) {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -292,6 +298,7 @@ class Authentications extends ChangeNotifier {
         } else {
           return showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (BuildContext context) {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -325,6 +332,7 @@ class Authentications extends ChangeNotifier {
       } else {
         return showDialog(
           context: context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -397,12 +405,22 @@ class Authentications extends ChangeNotifier {
         } else {
           return showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (BuildContext context) {
               return AlertDialog(
                 backgroundColor: Color.fromARGB(255, 23, 23, 23),
                 title: null,
-                content:
-                    Text('OTP expired.', style: TextStyle(color: Colors.white)),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Center(
+                      child: Text(
+                        'OTP expired.',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
                 actions: <Widget>[
                   TextButton(
                     onPressed: () {
@@ -421,12 +439,22 @@ class Authentications extends ChangeNotifier {
       } else {
         return showDialog(
           context: context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
               title: null,
-              content:
-                  Text('Invalid OTP.', style: TextStyle(color: Colors.white)),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Center(
+                    child: Text(
+                      'Invalid OTP.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {

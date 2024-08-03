@@ -19,6 +19,7 @@ class ViewModelLogin extends ChangeNotifier {
       if (email.isEmpty || password.isEmpty) {
         return showDialog(
           context: _context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -83,6 +84,7 @@ class ViewModelLogin extends ChangeNotifier {
       } else {
         return showDialog(
           context: _context,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return AlertDialog(
               backgroundColor: Color.fromARGB(255, 23, 23, 23),
